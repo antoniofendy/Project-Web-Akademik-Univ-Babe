@@ -46,6 +46,17 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'mahasiswa' => [
+            'driver' => 'session',
+            'provider' => 'mahasiswa_provider',
+        ],
+
+        'api-mahasiswa' => [
+            'driver' => 'token',
+            'provider' => 'mahasiswa_provider',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -69,6 +80,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'mahasiswa_provider' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Mahasiswa::class,
         ],
 
         // 'users' => [
@@ -95,6 +111,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'mahasiswa' => [
+            'provider' => 'mahasiswa_provider',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
