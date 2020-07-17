@@ -32,6 +32,10 @@ else{
 Route::group(['prefix' => 'administrator'], function(){
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/dashboard', 'HomeController@dashboard');
+
+    //Data Mahasiswa
+    Route::get('/data/mahasiswa', 'Admin\MahasiswaController@index');
+
 });
 
 

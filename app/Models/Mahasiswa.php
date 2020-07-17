@@ -21,6 +21,17 @@ class Mahasiswa extends Authenticatable
     ];
 
     protected $hidden = ['password', 'remember_token'];
+
+    //relasi one to one dengan jurusan
+    public function jurusan(){
+        return $this->hasOne('App\Models\Jurusan');
+    }
+
+    public function kelas(){
+        return $this->hasOne('App\Models\Kelas');
+    }
+
+    
 }
 
 
