@@ -31,6 +31,7 @@ else{
 //route group untuk admin
 Route::group(['prefix' => 'administrator'], function(){
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/dashboard', 'HomeController@dashboard');
 });
 
 
