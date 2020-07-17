@@ -17,6 +17,10 @@ class CreateNilaiTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('matkul_id');
             $table->unsignedBigInteger('mhs_id');
+            $table->unsignedInteger('tugas');
+            $table->unsignedInteger('uts');
+            $table->unsignedInteger('uas');
+            $table->string('grade');
             $table->timestamps();
 
             $table->foreign('matkul_id')->references('id')->on('mata_kuliah')

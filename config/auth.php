@@ -57,6 +57,17 @@ return [
             'provider' => 'mahasiswa_provider',
             'hash' => false,
         ],
+
+        'dosen' => [
+            'driver' => 'session',
+            'provider' => 'dosen_provider',
+        ],
+
+        'api-dosen' => [
+            'driver' => 'token',
+            'provider' => 'dosen_provider',
+            'hash' => false,
+        ],
     ],
 
     /*
@@ -85,6 +96,11 @@ return [
         'mahasiswa_provider' => [
             'driver' => 'eloquent',
             'model' => App\Models\Mahasiswa::class,
+        ],
+
+        'dosen_provider' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Dosen::class,
         ],
 
         // 'users' => [
@@ -118,6 +134,13 @@ return [
 
         'mahasiswa' => [
             'provider' => 'mahasiswa_provider',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'dosen' => [
+            'provider' => 'dosen_provider',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

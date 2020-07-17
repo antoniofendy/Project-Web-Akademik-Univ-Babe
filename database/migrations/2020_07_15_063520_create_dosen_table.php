@@ -15,12 +15,20 @@ class CreateDosenTable extends Migration
     {
         Schema::create('dosen', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama');
+            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('foto');
+            $table->string('telepon');
+            $table->string('alamat');
+            $table->unsignedBigInteger('jurusan_id');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('jurusan_id')->references('id')->on('jurusan')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 

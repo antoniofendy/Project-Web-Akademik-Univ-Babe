@@ -17,13 +17,24 @@ class CreateJadwalTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('matkul_id');
             $table->unsignedBigInteger('ruangan_id');
-            $table->timestamps();
+            $table->unsignedBigInteger('kelas_id');
+            $table->unsignedBigInteger('dosen_id');
+            $table->string('jam_mulai');
+            $table->string('jam_selesai');
 
             $table->foreign('matkul_id')->references('id')->on('mata_kuliah')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
             $table->foreign('ruangan_id')->references('id')->on('ruangan')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+            $table->foreign('kelas_id')->references('id')->on('kelas')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+            $table->foreign('dosen_id')->references('id')->on('dosen')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

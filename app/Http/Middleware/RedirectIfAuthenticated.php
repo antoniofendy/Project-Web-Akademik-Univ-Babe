@@ -18,11 +18,18 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        
         switch($guard){
-
+            
             case 'mahasiswa' :
                 if(Auth::guard($guard)->check()){
                     return redirect()->route('mahasiswa.home');
+                }
+                break;
+
+            case 'dosen' :
+                if(Auth::guard($guard)->check()){
+                    return redirect()->route('dosen.home');
                 }
                 break;
             
@@ -33,7 +40,6 @@ class RedirectIfAuthenticated
                 break;
 
         }
-
         return $next($request);
     }
 }

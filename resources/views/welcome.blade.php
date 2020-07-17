@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Business Frontpage - Start Bootstrap Template</title>
+    <title>Universitas Babe Mulia</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('homepage/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -48,8 +48,8 @@
                 Login
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Dosen</a>
-                <a class="dropdown-item" href="#">Mahasiswa</a>
+                <a class="dropdown-item" href="/dosen">Dosen</a>
+                <a class="dropdown-item" href="/mahasiswa">Mahasiswa</a>
                 <div class="dropdown-divider"></div>
                 </div>
             </li>
