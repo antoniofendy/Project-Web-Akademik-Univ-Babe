@@ -17,9 +17,9 @@ class MahasiswaController extends Controller
     public function index()
     {
 
-        dd(Mahasiswa::all());
+        $mahasiswa = Mahasiswa::all();
 
-        return view('admin.pages.mahasiswa.index');
+        return view('admin.pages.mahasiswa.index', ['mahasiswa'=>$mahasiswa]);
     }
 
     /**
