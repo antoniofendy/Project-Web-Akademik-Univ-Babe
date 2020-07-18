@@ -16,9 +16,10 @@ class CreateMahasiswaTable extends Migration
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('jenis_kelamin');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->unsignedBigInteger('jurusan_id');
             $table->unsignedBigInteger('kelas_id');
             $table->string('foto');
@@ -26,7 +27,7 @@ class CreateMahasiswaTable extends Migration
             $table->string('telepon')->nullable();
             $table->string('hp');
             $table->string('tempat_lahir');
-            $table->string('tanggal_lahir');
+            $table->date('tanggal_lahir');
             $table->string('agama');
             $table->string('kewarganegaraan');
             $table->string('nama_ortu');

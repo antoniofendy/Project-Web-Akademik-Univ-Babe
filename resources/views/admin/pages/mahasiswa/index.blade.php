@@ -1,3 +1,5 @@
+<?php $BaseUrl = '/administrator/'; ?>
+
 @extends('layouts.admin_temp.master')
 
 @section('title')
@@ -8,45 +10,39 @@
 @endsection
 
 @section('konten')
+
+    <a href="{{url( $BaseUrl . 'data/mahasiswa/create')}}" class="btn btn-primary mb-3"><i class="fas fa-plus"> Tambah Mahasiswa</i></a>
     
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                    <h3 class="card-title">Data Semua Mahasiswa</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover">
+                    <table id="example1" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
+                                <th>Nim</th>
+                                <th>Nama</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($mahasiswa as $data)
                                 <tr>
-                                    <td></td>
-                                    <td>Internet
-                                        Explorer 4.0
-                                    </td>
-                                    <td>Win 95+</td>
-                                    <td> 4</td>
-                                    <td>X</td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$data->id}}</td>
+                                    <td>{{$data->name}}</td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
+                                <th>No</th>
+                                <th>Nim</th>
+                                <th>Nama</th>
                             </tr>
                         </tfoot>
                     </table>

@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use App\Models\Mahasiswa;
+use App\Models\Jurusan;
+use App\Models\Kelas;
+
+include ('lib/getNewNim.php');
 
 class MahasiswaController extends Controller
 {
@@ -29,7 +34,14 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+
+        $jurusan = Jurusan::all();
+        $kelas = Kelas::all();
+
+        return view('admin.pages.mahasiswa.create', [
+            'jurusan' => $jurusan,
+            'kelas' => $kelas
+        ]);
     }
 
     /**
@@ -40,7 +52,44 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $created_at = Carbon::now()->toDateTimeString();
+        $updated_at = Carbon::now()->toDateTimeString();
+
+        $id = getNim($request->jurusan, $created_at);
+        
+        $foto = $request->file('foto');
+        $nama_foto = $foto->getClientOriginalName();
+        $tipe_foto = $foto->getClientOriginalExtension();
+        
+        $tujuan_simpan = public_path() . '\Mahasiswa\\' . substr($created_at, 0 , 4);
+        $foto->move($tujuan_simpan, $id . '.' . $tipe_foto);
+
+            Mahasiswa::create([
+            'id' => $id,
+            'name' => $request->name,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'jurusan_id' => $request->jurusan,
+            'kelas_id' => $request->kelas,
+            'foto' => $id . '.' . $tipe_foto,
+            'alamat' => $request->alamat,
+            'telepon' => $request->telepon,
+            'hp' => $request->hp,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'agama' => $request->agama,
+            'kewarganegaraan' => $request->kewarganegaraan,
+            'nama_ortu' => $request->nama_ortu,
+            'alamat_ortu' => $request->alamat_ortu,
+            'telepon_ortu' => $request->telepon_ortu,
+            'semester' => $request->semester,
+            'shift' => $request->shift,
+            'created_at' => $created_at,
+            'updated_at' => $updated_at
+        ]);
+        
+        return redirect('administrator/data/mahasiswa');
     }
 
     /**

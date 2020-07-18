@@ -52,10 +52,11 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
-
+        dd(Auth::guard('mahasiswa')->attempt($credentials, $request->member));
         //Attempt to log user in
         if(Auth::guard('mahasiswa')->attempt($credentials, $request->member)){
 
+            
             //if login successful, then redirect to intended location
             return redirect()->intended(route('mahasiswa.home'));
 

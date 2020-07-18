@@ -35,9 +35,10 @@ Route::group(['prefix' => 'administrator'], function(){
 
     //Data Mahasiswa
     Route::get('/data/mahasiswa', 'Admin\MahasiswaController@index');
+    Route::get('/data/mahasiswa/create', 'Admin\MahasiswaController@create');
+    Route::post('/data/mahasiswa/store', 'Admin\MahasiswaController@store');
 
 });
-
 
 //route group untuk mahasiswa
 Route::group(['prefix'=>'mahasiswa'], function(){
