@@ -11,4 +11,12 @@ class Kelas extends Model
 
     protected $guarded = [];
 
+    public function jurusan(){
+        return $this->belongsTo('App\Models\Jurusan');
+    }
+
+    public function mahasiswa(){
+        return $this->hasMany('App\Models\Mahasiswa');
+    }
+
 }

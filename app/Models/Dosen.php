@@ -23,4 +23,8 @@ class Dosen extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
+    public function jurusan(){
+        return $this->belongsTo('App\Models\Jurusan');
+    }
+
 }

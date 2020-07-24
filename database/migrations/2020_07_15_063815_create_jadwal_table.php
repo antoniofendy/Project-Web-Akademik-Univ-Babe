@@ -15,12 +15,15 @@ class CreateJadwalTable extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('matkul_id');
+            $table->string('matkul_id');
             $table->unsignedBigInteger('ruangan_id');
             $table->unsignedBigInteger('kelas_id');
             $table->unsignedBigInteger('dosen_id');
-            $table->string('jam_mulai');
-            $table->string('jam_selesai');
+
+            //https://kodingin.com/tipe-data-enum-dan-set-pada-mysql/#:~:text=Perbedaan%20Antara%20tipe%20data%20ENUM,Semoga%20Bermanfaat.
+            $table->set('hari', ['1', '2', '3', '4', '5', '6', '7']);
+            $table->time('jam_mulai', 0);
+            $table->time('jam_selesai', 0);
 
             $table->foreign('matkul_id')->references('id')->on('mata_kuliah')
             ->onDelete('cascade')

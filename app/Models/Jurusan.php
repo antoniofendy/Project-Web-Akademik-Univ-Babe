@@ -10,4 +10,8 @@ class Jurusan extends Model
 
     protected $guarded = [];
 
+    public function mahasiswa(){
+        return $this->hasMany('App\Models\Mahasiswa');
+    }
+
 }

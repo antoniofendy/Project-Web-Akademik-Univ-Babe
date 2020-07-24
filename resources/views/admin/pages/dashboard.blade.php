@@ -14,7 +14,7 @@
         <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>150</h3>
+                    <h3>{{$mahasiswa->count()}}</h3>
 
                     <p>Jumlah Mahasiswa</p>
                 </div>
@@ -29,7 +29,7 @@
         <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3>{{$dosen->count()}}</h3>
 
                     <p>Jumlah Dosen</p>
                 </div>
@@ -44,7 +44,7 @@
         <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>44</h3>
+                    <h3>{{$kelas->count()}}</h3>
 
                     <p>Jumlah Kelas</p>
                 </div>

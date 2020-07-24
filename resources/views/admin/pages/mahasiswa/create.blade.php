@@ -98,10 +98,10 @@
                                         <option disabled selected>-Pilih Agama-</option>
                                         <option value="kristen">Kristen</option>
                                         <option value="islam">Islam</option>
-                                        <option value="katollik">Katolik</option>
+                                        <option value="khatollik">Katolik</option>
                                         <option value="'hindu'">Hindu</option>
                                         <option value="buddha">Buddha</option>
-                                        <option value="konghucu">Kong Hu Chu</option>
+                                        <option value="kong hu chu">Kong Hu Chu</option>
                                     </select>
                                 </div>
 

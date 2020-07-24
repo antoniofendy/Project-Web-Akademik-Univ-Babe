@@ -37,6 +37,28 @@ Route::group(['prefix' => 'administrator'], function(){
     Route::get('/data/mahasiswa', 'Admin\MahasiswaController@index');
     Route::get('/data/mahasiswa/create', 'Admin\MahasiswaController@create');
     Route::post('/data/mahasiswa/store', 'Admin\MahasiswaController@store');
+    Route::get('/data/mahasiswa/show/{mahasiswa_id}', 'Admin\MahasiswaController@show');
+
+    //Data Dosen
+    Route::resource('/data/dosen', 'Admin\DosenController');
+
+    //Data Kelas
+    Route::resource('/data/kelas', 'Admin\KelasController');
+
+    //Data Ruangan
+    Route::resource('/data/ruangan', 'Admin\RuanganController');
+
+    //Data Jurusan
+    Route::resource('/data/jurusan', 'Admin\JurusanController');
+
+    //Data Mata kuliah
+    Route::resource('/data/matakuliah', 'Admin\MataKuliahController');
+
+    //Data Jadwal
+    Route::resource('/data/jadwal', 'Admin\JadwalController');
+
+    //Data Nilai
+    Route::resource('/data/nilai', 'Admin\NilaiController');
 
 });
 

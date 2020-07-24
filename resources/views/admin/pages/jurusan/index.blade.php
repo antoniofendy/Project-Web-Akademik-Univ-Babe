@@ -4,20 +4,20 @@
 
 @section('title')
     
-    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-    Data Mahasiswa
+    <i class="fas fa-book" aria-hidden="true"></i>
+    Data Jurusan
 
 @endsection
 
 @section('konten')
 
-    <a href="{{url( $BaseUrl . 'data/mahasiswa/create')}}" class="btn btn-primary mb-3"><i class="fas fa-plus"> Tambah Mahasiswa</i></a>
+    <a href="{{url( $BaseUrl . 'data/jurusan/create')}}" class="btn btn-primary mb-3"><i class="fas fa-plus"> Tambah Jurusan</i></a>
     
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Data Seluruh Mahasiswa</h3>
+                    <h3 class="card-title">Data Seluruh Jurusan</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -25,36 +25,27 @@
                         <thead>
                             <tr>
                                 <th width="5%">No</th>
-                                <th width="15%">Nim</th>
-                                <th>Nama</th>
-                                <th>Jurusan</th>
-                                <th width="5%">Semester</th>
-                                <th>Kelas</th>
+                                <th width="15%">Nama Jurusan</th>
+                                <th>Jumlah Mahasiswa</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($mahasiswa as $data)
+                            @foreach ($jurusan as $data)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$data->id}}</td>
-                                    <td>{{$data->name}}</td>
-                                    <td>{{$data->jurusan->nama_jurusan}}</td>
-                                    <td>{{$data->semester}}</td>
-                                    <td>{{$data->kelas->nama_kelas}}</td>
-                                    <td><a href="{{url( $BaseUrl . 'data/mahasiswa/show/' . $data->id)}}" class="btn btn-info"><i class="fa fa-eye"> Detail</i></a></td>
+                                    <td>{{$data->nama_jurusan}}</td>
+                                    <td>{{$data->mahasiswa->count()}}</td>
+                                    <td><a href="{{url( $BaseUrl . 'data/jurusan/' . $data->id)}}" class="btn btn-info"><i class="fa fa-eye"> Detail</i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <th width="5%">No</th>
-                                <th width="15%">Nim</th>
-                                <th>Nama</th>
-                                <th>Jurusan</th>
-                                <th width="5%">Semester</th>
-                                <th>Kelas</th>
-                                <th>Kelas</th>
+                                <th width="40%">Nama Jurusan</th>
+                                <th>Jumlah Mahasiswa</th>
+                                <th>Aksi</th>
                             </tr>
                         </tfoot>
                     </table>

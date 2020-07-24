@@ -86,43 +86,43 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../tables/data.html" class="nav-link">
+                <a href="{{url('/' . $BaseUrl . '/data/dosen')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Dosen</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link">
+                <a href="{{url('/' . $BaseUrl . '/data/jurusan')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Jurusan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link">
+                <a href="{{url('/' . $BaseUrl . '/data/matakuliah')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Mata Kuliah</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link">
+                <a href="{{url('/' . $BaseUrl . '/data/nilai')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Nilai</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link">
+                <a href="{{url('/' . $BaseUrl . '/data/kelas')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Kelas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link">
+                <a href="{{url('/' . $BaseUrl . '/data/jadwal')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Jadwal</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../tables/jsgrid.html" class="nav-link">
+                <a href="{{url('/' . $BaseUrl . '/data/ruangan')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Ruangan</p>
                 </a>
@@ -235,8 +235,8 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
                 Extras
@@ -305,7 +305,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../examples/blank.html" class="nav-link active">
+                <a href="../examples/blank.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Blank Page</p>
                 </a>

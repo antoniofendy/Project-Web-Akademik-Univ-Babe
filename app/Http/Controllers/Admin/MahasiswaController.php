@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Mahasiswa;
 use App\Models\Jurusan;
@@ -14,6 +15,12 @@ include ('lib/getNewNim.php');
 
 class MahasiswaController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +41,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-
+        
         $jurusan = Jurusan::all();
         $kelas = Kelas::all();
 
@@ -61,7 +68,7 @@ class MahasiswaController extends Controller
         $nama_foto = $foto->getClientOriginalName();
         $tipe_foto = $foto->getClientOriginalExtension();
         
-        $tujuan_simpan = public_path() . '\Mahasiswa\\' . substr($created_at, 0 , 4);
+        $tujuan_simpan = public_path() . '\Data Mahasiswa\Mahasiswa\\' . substr($created_at, 0 , 4);
         $foto->move($tujuan_simpan, $id . '.' . $tipe_foto);
 
             Mahasiswa::create([
@@ -69,7 +76,7 @@ class MahasiswaController extends Controller
             'name' => $request->name,
             'jenis_kelamin' => $request->jenis_kelamin,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->telepon),
             'jurusan_id' => $request->jurusan,
             'kelas_id' => $request->kelas,
             'foto' => $id . '.' . $tipe_foto,
@@ -100,7 +107,12 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $mahasiswa = Mahasiswa::find($id);
+        $kelas = Kelas::all();
+        $jurusan = Jurusan::all();
+
+        return view('admin.pages.mahasiswa.show', compact('mahasiswa', 'kelas', 'jurusan'));
     }
 
     /**

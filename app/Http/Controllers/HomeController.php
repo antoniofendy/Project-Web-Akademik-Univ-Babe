@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Mahasiswa;
+use App\Models\Kelas;
+use App\Models\Dosen;
+
 class HomeController extends Controller
 {
     /**
@@ -27,7 +31,12 @@ class HomeController extends Controller
     }
 
     public function dashboard(){
-        return view('admin.pages.dashboard');
+
+        $mahasiswa = Mahasiswa::all();
+        $dosen = Dosen::all();
+        $kelas = Kelas::all();
+
+        return view('admin.pages.dashboard', compact('mahasiswa', 'dosen', 'kelas'));
     }
 
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRuanganTable extends Migration
+class AddKapasitasToRuanganTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateRuanganTable extends Migration
      */
     public function up()
     {
-        Schema::create('ruangan', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nama_ruangan')->unique();
-            $table->timestamps();
+        Schema::table('ruangan', function (Blueprint $table) {
+            $table->unsignedInteger('kapasitas');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateRuanganTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ruangan');
+        Schema::table('ruangan', function (Blueprint $table) {
+            $table->dropColumn('kapasitas');
+        });
     }
 }

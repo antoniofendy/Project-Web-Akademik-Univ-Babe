@@ -14,11 +14,13 @@ class CreateMataKuliahTable extends Migration
     public function up()
     {
         Schema::create('mata_kuliah', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->string('id');
             $table->string('nama_matkul');
             $table->integer('sks_matkul');
             $table->integer('semester');
             $table->timestamps();
+
+            $table->primary('id');
         });
     }
 
