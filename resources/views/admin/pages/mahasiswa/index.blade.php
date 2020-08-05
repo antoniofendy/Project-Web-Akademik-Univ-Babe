@@ -42,7 +42,7 @@
                                     <td>{{$data->jurusan->nama_jurusan}}</td>
                                     <td>{{$data->semester}}</td>
                                     <td>{{$data->kelas->nama_kelas}}</td>
-                                    <td><a href="{{url( $BaseUrl . 'data/mahasiswa/show/' . $data->id)}}" class="btn btn-info"><i class="fa fa-eye"> Detail</i></a></td>
+                                    <td><a href="{{url( $BaseUrl . 'data/mahasiswa/' . $data->id)}}" class="btn btn-info"><i class="fa fa-eye"> Detail</i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>

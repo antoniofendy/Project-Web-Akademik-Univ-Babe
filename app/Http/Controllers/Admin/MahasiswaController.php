@@ -123,7 +123,10 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mahasiswa = Mahasiswa::find($id);
+        $kelas = Kelas::all();
+        $jurusan = Jurusan::all();
+        return view('admin.pages.mahasiswa.edit', compact('mahasiswa', 'kelas', 'jurusan'));
     }
 
     /**
@@ -146,6 +149,6 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

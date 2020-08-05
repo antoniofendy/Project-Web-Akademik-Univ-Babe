@@ -1,4 +1,7 @@
-<?php $BaseUrl = '/administrator/'; ?>
+<?php 
+    $BaseUrl = '/administrator/'; 
+    use \App\Lib\EnumListMhs;
+?>
 
 @extends('layouts.admin_temp.master')
 
@@ -21,7 +24,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-8 col-md-12">
-                            <form action="{{url($BaseUrl . 'data/mahasiswa/store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{url($BaseUrl . 'data/mahasiswa')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Nama Mahasiswa</label>
@@ -32,8 +35,9 @@
                                     <label for="jenis_kelamin">Jenis Kelamin</label>
                                     <select class="form-control" name="jenis_kelamin">
                                         <option disabled selected>-Pilih Jenis Kelamin-</option>
-                                        <option value="l">Laki-laki</option>
-                                        <option value="p">Perempuan</option>
+                                        @foreach (EnumListMhs::jenis_kelamin() as $key => $item)
+                                            <option value="{{$key}}">{{$item}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -96,12 +100,9 @@
                                     <label for="agama">Agama</label>
                                     <select class="form-control" name="agama">
                                         <option disabled selected>-Pilih Agama-</option>
-                                        <option value="kristen">Kristen</option>
-                                        <option value="islam">Islam</option>
-                                        <option value="khatollik">Katolik</option>
-                                        <option value="'hindu'">Hindu</option>
-                                        <option value="buddha">Buddha</option>
-                                        <option value="kong hu chu">Kong Hu Chu</option>
+                                        @foreach (EnumListMhs::agama() as $key => $item)
+                                            <option value="{{$key}}">{{$item}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -134,8 +135,9 @@
                                     <label for="shift">Shift</label>
                                     <select class="form-control" name="shift">
                                         <option disabled selected>-Pilih Shift-</option>
-                                        <option value="p">Pagi</option>
-                                        <option value="m">Malam</option>
+                                        @foreach (EnumListMhs::shift() as $key => $item)
+                                            <option value="{{$key}}">{{$item}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

@@ -34,10 +34,11 @@ Route::group(['prefix' => 'administrator'], function(){
     Route::get('/dashboard', 'HomeController@dashboard');
 
     //Data Mahasiswa
-    Route::get('/data/mahasiswa', 'Admin\MahasiswaController@index');
-    Route::get('/data/mahasiswa/create', 'Admin\MahasiswaController@create');
-    Route::post('/data/mahasiswa/store', 'Admin\MahasiswaController@store');
-    Route::get('/data/mahasiswa/show/{mahasiswa_id}', 'Admin\MahasiswaController@show');
+    // Route::get('/data/mahasiswa', 'Admin\MahasiswaController@index');
+    // Route::get('/data/mahasiswa/create', 'Admin\MahasiswaController@create');
+    // Route::post('/data/mahasiswa/store', 'Admin\MahasiswaController@store');
+    // Route::get('/data/mahasiswa/show/{mahasiswa_id}', 'Admin\MahasiswaController@show');
+    Route::resource('/data/mahasiswa', 'Admin\MahasiswaController');
 
     //Data Dosen
     Route::resource('/data/dosen', 'Admin\DosenController');

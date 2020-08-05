@@ -85,12 +85,12 @@
                         <div class="col-md-6 col-sm-12 mt-3">
                                 <div class="form-group">
                                     <label for="name">Nama Mahasiswa</label>
-                                    <input type="text" name="name" value="{{$mahasiswa->name}}" class="form-control" placeholder="Nama Mahasiswa" disabled>
+                                    <input type="text" name="name" value="{{$mahasiswa->name}}" class="form-control" placeholder="Nama Mahasiswa">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <select class="form-control" name="jenis_kelamin" disabled>
+                                    <select class="form-control" name="jenis_kelamin">
                                         <option disabled selected>-Pilih Jenis Kelamin-</option>
                                         @foreach (EnumListMhs::jenis_kelamin() as $key => $item)
                                             @if ($key == $mahasiswa->jenis_kelamin)
@@ -104,7 +104,7 @@
 
                                 <div class="form-group">
                                     <label for="email">Email Mahasiswa</label>
-                                    <input type="email" name="email" value="{{$mahasiswa->email}}" class="form-control" placeholder="Email Mahasiswa" disabled>
+                                    <input type="email" name="email" value="{{$mahasiswa->email}}" class="form-control" placeholder="Email Mahasiswa">
                                 </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="jurusan">Jurusan</label>
-                                <select class="form-control" name="jurusan" disabled>
+                                <select class="form-control" name="jurusan">
                                     @foreach ($jurusan as $item)
                                         @if ($item->id == $mahasiswa->jurusan_id)
                                             <option value="{{$item->id}}" selected>{{$item->nama_jurusan}}</option>
@@ -127,7 +127,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="kelas">Kelas</label>
-                                <select class="form-control" name="kelas" disabled>
+                                <select class="form-control" name="kelas">
                                     @foreach ($kelas as $item)
                                         @if ($item->id == $mahasiswa->kelas_id)
                                             <option value="{{$item->id}}" selected>{{$item->nama_kelas}}</option>
@@ -144,18 +144,14 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="foto">Foto</label>
-                                @if ($mahasiswa->foto != '')
-                                    <input type="text" value="{{$mahasiswa->foto}}" disabled class="form-control"> 
-                                @else
-                                    <input type="file" class="form-control-file" name="foto">
-                                @endif
+                                <input type="file" class="form-control-file" name="foto">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <input type="text" value="{{$mahasiswa->alamat}}" name="alamat" cols="50" rows="5" class="form-control" disabled>
+                                <input type="text" value="{{$mahasiswa->alamat}}" name="alamat" cols="50" rows="5" class="form-control">
                             </div>
                         </div>
 
@@ -165,14 +161,14 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="telepon">Telepon</label>
-                                <input type="number" name="telepon" value="{{$mahasiswa->telepon}}" class="form-control" placeholder="Telepon Mahasiswa" disabled>
+                                <input type="number" name="telepon" value="{{$mahasiswa->telepon}}" class="form-control" placeholder="Telepon Mahasiswa">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="hp">HP</label>
-                                <input type="number" name="hp" value="{{$mahasiswa->hp}}" class="form-control" placeholder="HP Mahasiswa" disabled>
+                                <input type="number" name="hp" value="{{$mahasiswa->hp}}" class="form-control" placeholder="HP Mahasiswa">
                             </div>
                         </div>
 
@@ -182,13 +178,13 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="tempat_lahir">Tempat Lahir</label>
-                                <input type="text" name="tempat_lahir" value="{{$mahasiswa->tempat_lahir}}" class="form-control" placeholder="Tempat Lahir Mahasiswa" disabled>
+                                <input type="text" name="tempat_lahir" value="{{$mahasiswa->tempat_lahir}}" class="form-control" placeholder="Tempat Lahir Mahasiswa">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="tempat_lahir">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir" value="{{$mahasiswa->tanggal_lahir}}" class="form-control" placeholder="Tanggal Lahir Mahasiswa" disabled>
+                                <input type="date" name="tanggal_lahir" value="{{$mahasiswa->tanggal_lahir}}" class="form-control" placeholder="Tanggal Lahir Mahasiswa">
                             </div>
                         </div>
 
@@ -197,7 +193,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="agama">Agama</label>
-                                <select class="form-control" name="agama" disabled>
+                                <select class="form-control" name="agama">
                                     <option disabled selected>-Pilih Agama-</option>
                                         @foreach (EnumListMhs::agama() as $key => $item)
                                             @if ($key == $mahasiswa->agama)
@@ -212,7 +208,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="kewarganegaraan">Kewarganegaraan</label>
-                                <input type="text" name="kewarganegaraan" value="{{$mahasiswa->kewarganegaraan}}" class="form-control" placeholder="ex : Indonesia" disabled>
+                                <input type="text" name="kewarganegaraan" value="{{$mahasiswa->kewarganegaraan}}" class="form-control" placeholder="ex : Indonesia">
                             </div>
                         </div>
                     </div>
@@ -220,13 +216,13 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="nama_ortu">Nama Orang Tua</label>
-                                <input type="text" name="nama_ortu" value="{{$mahasiswa->nama_ortu}}" class="form-control" placeholder="Nama Orang Tua Mahasiswa" disabled>
+                                <input type="text" name="nama_ortu" value="{{$mahasiswa->nama_ortu}}" class="form-control" placeholder="Nama Orang Tua Mahasiswa">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="alamat_ortu">Alamat Orang Tua</label>
-                                <input type="text" name="alamat_ortu" value="{{$mahasiswa->alamat_ortu}}" class="form-control" placeholder="Alamat Orang Tua Mahasiswa" disabled>
+                                <input type="text" name="alamat_ortu" value="{{$mahasiswa->alamat_ortu}}" class="form-control" placeholder="Alamat Orang Tua Mahasiswa">
                             </div>
                         </div>
                     </div>
@@ -234,20 +230,21 @@
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="telepon_ortu">Telepon Orang Tua</label>
-                                <input type="number" name="telepon_ortu" value="{{$mahasiswa->telepon_ortu}}" class="form-control" placeholder="Telepon Orang Tua Mahasiswa" disabled>
+                                <input type="number" name="telepon_ortu" value="{{$mahasiswa->telepon_ortu}}" class="form-control" placeholder="Telepon Orang Tua Mahasiswa">
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="semester">Semester</label>
-                                <input type="number" name="semester" value="{{$mahasiswa->semester}}" class="form-control" placeholder="Semester Mahasiswa" disabled>
+                                <input type="number" name="semester" value="{{$mahasiswa->semester}}" class="form-control" placeholder="Semester Mahasiswa">
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="shift">Shift</label>
-                                <select class="form-control" name="shift" disabled>
-                                    @foreach (EnumListMhs::shift() as $key => $item)
+                                <select class="form-control" name="shift">
+                                    <option disabled selected>-Pilih Shift-</option>
+                                        @foreach (EnumListMhs::shift() as $key => $item)
                                             @if ($key == $mahasiswa->shift)
                                                 <option value="{{$key}}" selected>{{$item}}</option>
                                             @else
