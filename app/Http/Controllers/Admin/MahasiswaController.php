@@ -138,7 +138,72 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mahasiswa = Mahasiswa::find($id);
+
+        $updated_at = Carbon::now()->toDateTimeString();
+
+        $foto = $request->file('foto');
+        
+        //if the student not update their photo
+        if(is_null($foto)){
+
+            $mahasiswa->update([
+                'name' => $request->name,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'email' => $request->email,
+                'password' => Hash::make($request->telepon),
+                'jurusan_id' => $request->jurusan,
+                'kelas_id' => $request->kelas,
+                'alamat' => $request->alamat,
+                'telepon' => $request->telepon,
+                'hp' => $request->hp,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'agama' => $request->agama,
+                'kewarganegaraan' => $request->kewarganegaraan,
+                'nama_ortu' => $request->nama_ortu,
+                'alamat_ortu' => $request->alamat_ortu,
+                'telepon_ortu' => $request->telepon_ortu,
+                'semester' => $request->semester,
+                'shift' => $request->shift,
+                'updated_at' => $updated_at
+            ]);
+
+        }
+        else{
+            $nama_foto = $foto->getClientOriginalName();
+            $tipe_foto = $foto->getClientOriginalExtension();
+            
+            $tujuan_simpan = public_path() . '\Data Mahasiswa\Mahasiswa\\' . substr($mahasiswa->created_at, 0 , 4);
+            $foto->move($tujuan_simpan, $id . '.' . $tipe_foto);
+
+            $mahasiswa->update([
+                'name' => $request->name,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'email' => $request->email,
+                'password' => Hash::make($request->telepon),
+                'jurusan_id' => $request->jurusan,
+                'kelas_id' => $request->kelas,
+                'foto' => $id . '.' . $tipe_foto,
+                'alamat' => $request->alamat,
+                'telepon' => $request->telepon,
+                'hp' => $request->hp,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'agama' => $request->agama,
+                'kewarganegaraan' => $request->kewarganegaraan,
+                'nama_ortu' => $request->nama_ortu,
+                'alamat_ortu' => $request->alamat_ortu,
+                'telepon_ortu' => $request->telepon_ortu,
+                'semester' => $request->semester,
+                'shift' => $request->shift,
+                'updated_at' => $updated_at
+            ]);
+        }
+
+        return redirect('administrator/data/mahasiswa')->with("update_success", "Berhasil mengupdate data mahasiswa");
+
+        
     }
 
     /**
@@ -149,6 +214,9 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        
+        $mahasiswa = Mahasiswa::find($id);
+        $mahasiswa->delete();
+
+        return redirect('administrator/data/mahasiswa')->with("delete_success", "Berhasil menghapus data mahasiswa");
     }
 }

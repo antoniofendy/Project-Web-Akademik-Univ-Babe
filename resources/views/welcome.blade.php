@@ -48,8 +48,8 @@
                 Login
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/dosen">Dosen</a>
-                <a class="dropdown-item" href="/mahasiswa">Mahasiswa</a>
+                <a class="dropdown-item" href="{{url('/dosen')}}">Dosen</a>
+                <a class="dropdown-item" href="{{url('/mahasiswa')}}">Mahasiswa</a>
                 <div class="dropdown-divider"></div>
                 </div>
             </li>

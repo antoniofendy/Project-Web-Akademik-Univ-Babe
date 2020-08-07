@@ -34,7 +34,7 @@ class JurusanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.jurusan.create');
     }
 
     /**
@@ -45,7 +45,11 @@ class JurusanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jurusan = new Jurusan;
+        $jurusan->nama_jurusan = $request->name;
+        $jurusan->save();
+
+        return redirect('administrator/data/jurusan')->with('create_success', 'Berhasil menambahkan jurusan baru');
     }
 
     /**
@@ -67,7 +71,8 @@ class JurusanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jurusan = Jurusan::find($id);
+        return view('admin.pages.jurusan.edit', compact('jurusan'));
     }
 
     /**
@@ -79,7 +84,11 @@ class JurusanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jurusan =  Jurusan::find($id);
+        $jurusan->nama_jurusan = $request->name;
+        $jurusan->save();
+
+        return redirect('administrator/data/jurusan')->with('update_success', 'Berhasil mengupdate jurusan');
     }
 
     /**
@@ -90,6 +99,9 @@ class JurusanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jurusan = Jurusan::find($id);
+        $jurusan->delete();
+        
+        return redirect('administrator/data/jurusan')->with('delete_success', 'Berhasil menghapus jurusan');
     }
 }

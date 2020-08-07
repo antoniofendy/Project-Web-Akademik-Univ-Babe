@@ -11,6 +11,25 @@
 
 @section('konten')
 
+    @if (Session::has('delete_success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{!! Session::get('delete_success') !!}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @else
+        @if (Session::has('update_success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{!! Session::get('update_success') !!}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+    @endif
+
+
     <a href="{{url( $BaseUrl . 'data/mahasiswa/create')}}" class="btn btn-primary mb-3"><i class="fas fa-plus"> Tambah Mahasiswa</i></a>
     
     <div class="row">

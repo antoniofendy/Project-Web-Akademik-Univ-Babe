@@ -31,6 +31,9 @@
 
 @section('konten')
 
+    <form action="{{url($BaseUrl . 'data/mahasiswa/' . $mahasiswa->id)}}" method="post" enctype="multipart/form-data">
+        @csrf
+        @method("PUT")
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -257,12 +260,7 @@
                     </div>
                         <div class="row">
                             <div class="col">
-                                <a href="{{$BaseUrl . 'data/mahasiswa/' . $mahasiswa->id . '/edit'}}" class="btn btn-warning mr-2"><i class="fas fa-edit"> Edit</i></a>
-                                <form action="{{$BaseUrl . 'data/mahasiswa/' . $mahasiswa->id}}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"> Hapus</i></button>
-                                </form>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-pencil"> Update</i></button>
                             </div>
                         </div>
                 </div>
@@ -273,6 +271,7 @@
         <!-- /.card-body -->
     </div>
     <!-- ./col -->  
+</form>
 
 @endsection
 

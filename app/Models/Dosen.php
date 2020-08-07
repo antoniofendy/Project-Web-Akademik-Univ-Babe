@@ -17,14 +17,16 @@ class Dosen extends Authenticatable
 
     protected $guard = "dosen";
 
-    protected $fillable = [
-        'nama', 'email', 'username', 'password','email_verfied_at'
-    ];
+    protected $guarded = [];
 
     protected $hidden = ['password', 'remember_token'];
 
     public function jurusan(){
         return $this->belongsTo('App\Models\Jurusan');
+    }
+
+    public function jadwal(){
+        return $this->hasMany('App\Models\Jadwal');
     }
 
 }

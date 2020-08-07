@@ -11,6 +11,33 @@
 
 @section('konten')
 
+    @if (Session::has('delete_success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{!! Session::get('delete_success') !!}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @else
+            @if (Session::has('update_success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{!! Session::get('update_success') !!}</strong>
+                    <button button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @else
+                @if (Session::has('create_success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{!! Session::get('create_success') !!}</strong>
+                        <button button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+        @endif
+    @endif
+
     <a href="{{url( $BaseUrl . 'data/jurusan/create')}}" class="btn btn-primary mb-3"><i class="fas fa-plus"> Tambah Jurusan</i></a>
     
     <div class="row">
@@ -27,7 +54,7 @@
                                 <th width="5%">No</th>
                                 <th width="15%">Nama Jurusan</th>
                                 <th>Jumlah Mahasiswa</th>
-                                <th>Aksi</th>
+                                <th width="20%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,7 +63,14 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$data->nama_jurusan}}</td>
                                     <td>{{$data->mahasiswa->count()}}</td>
-                                    <td><a href="{{url( $BaseUrl . 'data/jurusan/' . $data->id)}}" class="btn btn-info"><i class="fa fa-eye"> Detail</i></a></td>
+                                    <td>
+                                        <a href="{{url( $BaseUrl . 'data/jurusan/' . $data->id. '/edit')}}" class="btn btn-info"><i class="fas fa-edit"> Edit</i></a>
+                                        <form action="{{url($BaseUrl . 'data/jurusan/' . $data->id)}}" method="post" class="d-inline">
+                                            @csrf
+                                            @method("DELETE")
+                                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"> Hapus</i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -45,7 +79,7 @@
                                 <th width="5%">No</th>
                                 <th width="40%">Nama Jurusan</th>
                                 <th>Jumlah Mahasiswa</th>
-                                <th>Aksi</th>
+                                <th width="20%">Aksi</th>
                             </tr>
                         </tfoot>
                     </table>

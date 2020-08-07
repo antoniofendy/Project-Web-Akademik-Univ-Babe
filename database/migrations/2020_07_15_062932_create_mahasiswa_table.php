@@ -16,7 +16,7 @@ class CreateMahasiswaTable extends Migration
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('jenis_kelamin');
+            $table->enum('jenis_kelamin', ['l', 'p']);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
@@ -28,13 +28,13 @@ class CreateMahasiswaTable extends Migration
             $table->string('hp');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->string('agama');
+            $table->enum('agama', ['kristen', 'khatolik', 'islam', 'buddha', 'hindu', 'kong hu chu']);
             $table->string('kewarganegaraan');
             $table->string('nama_ortu');
             $table->string('alamat_ortu');
             $table->string('telepon_ortu');
             $table->string('semester');
-            $table->string('shift');
+            $table->enum('shift', ['p', 'm']);
             $table->rememberToken();
             $table->timestamps();
 

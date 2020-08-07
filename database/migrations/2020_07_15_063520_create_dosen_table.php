@@ -16,7 +16,12 @@ class CreateDosenTable extends Migration
         Schema::create('dosen', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->enum('agama', ['kristen', 'khatolik', 'islam', 'buddha', 'hindu', 'kong hu chu']);
+            $table->enum('jenis_kelamin', ['l', 'p']);
             $table->string('email')->unique();
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
+            $table->string('kewarganegaraan');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('foto');
