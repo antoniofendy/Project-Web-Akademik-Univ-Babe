@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\MataKuliah;
+use App\Models\Jurusan;
 
 class MataKuliahController extends Controller
 {
@@ -33,7 +35,8 @@ class MataKuliahController extends Controller
      */
     public function create()
     {
-        //
+        $jurusan = Jurusan::all();
+        return view('admin.pages.mata_kuliah.create', compact('jurusan'));
     }
 
     /**
@@ -44,7 +47,17 @@ class MataKuliahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //we need to get id again, cause create.blade.php only sent the name of "jurusan", not the id
+        $jurusan_id = DB::table('jurusan')->where('nama_jurusan', $request->jurusan_id)->value('id');
+        MataKuliah::create([
+            "id" => $request->id,
+            "nama_matkul" => $request->nama_matkul,
+            "semester" => $request->semester,
+            "sks_matkul" => $request->sks_matkul,
+            "jurusan_id" => $jurusan_id
+        ]);
+
+        return redirect('administrator/data/matakuliah')->with('create_success', "Berhasil menambahkan mata kuliah");
     }
 
     /**
@@ -55,7 +68,10 @@ class MataKuliahController extends Controller
      */
     public function show($id)
     {
-        //
+        $mata_kuliah = MataKuliah::find($id);
+        $jurusan = Jurusan::all();
+
+        return view('admin.pages.mata_kuliah.show', compact('jurusan', 'mata_kuliah'));
     }
 
     /**

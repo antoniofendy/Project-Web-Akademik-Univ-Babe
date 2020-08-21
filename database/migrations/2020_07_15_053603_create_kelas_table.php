@@ -16,6 +16,20 @@ class CreateKelasTable extends Migration
         Schema::create('kelas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_kelas');
+            
+            $table->unsignedBigInteger("angkatan_id");
+            $table->foreign("angkatan_id")->references("id")->on("angkatan")
+            ->onDelete("cascade")
+            ->onUpdate("cascade");
+
+            $table->unsignedBigInteger('jurusan_id')->nullable();
+            $table->foreign('jurusan_id')->references('id')->on('jurusan')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
+
+            $table->integer("daya_tampung");
+            $table->boolean("status"); 
         });
     }
 

@@ -16,6 +16,7 @@ class CreateNilaiTable extends Migration
         Schema::create('nilai', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('matkul_id');
+            $table->string('semester');
             $table->unsignedBigInteger('mhs_id');
             $table->unsignedDecimal('tugas');
             $table->unsignedDecimal('uts');

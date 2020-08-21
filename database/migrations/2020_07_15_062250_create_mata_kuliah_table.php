@@ -17,10 +17,18 @@ class CreateMataKuliahTable extends Migration
             $table->string('id');
             $table->string('nama_matkul');
             $table->integer('sks_matkul');
+            $table->integer('sks_teori');
+            $table->integer('sks_praktek');
+            $table->string("silabus");
             $table->integer('semester');
+            $table->unsignedBigInteger('jurusan_id');
+            $table->boolean('status');
             $table->timestamps();
 
             $table->primary('id');
+            $table->foreign('jurusan_id')->references('id')->on('jurusan')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 

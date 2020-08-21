@@ -28,6 +28,14 @@ class CreateDosenTable extends Migration
             $table->string('telepon');
             $table->string('alamat');
             $table->unsignedBigInteger('jurusan_id');
+            $table->string("nik");
+            $table->string("gelar");
+            $table->string("jenjang_studi");
+            $table->enum("jabatan_akademik", ["Assisten Ahli", "Lektor", "Lektor Kepala", "Professor"]);
+            $table->string("kota");
+            $table->string("provinsi");
+            $table->string("kode_pos");
+            $table->dateTime("last_login", 0);
             $table->rememberToken();
             $table->timestamps();
 

@@ -5,12 +5,39 @@
 @section('title')
     
     <i class="fas fa-book" aria-hidden="true"></i>
-    Data Ruangan
+    Data Mata Kuliah
 @endsection
 
 @section('konten')
 
-    <a href="{{url( $BaseUrl . 'data/matakuliah/create')}}" class="btn btn-primary mb-3"><i class="fas fa-plus"> Tambah Ruangan</i></a>
+    @if (Session::has('delete_success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{!! Session::get('delete_success') !!}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @else
+            @if (Session::has('update_success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{!! Session::get('update_success') !!}</strong>
+                    <button button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @else
+                @if (Session::has('create_success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{!! Session::get('create_success') !!}</strong>
+                        <button button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
+        @endif
+    @endif
+
+    <a href="{{url( $BaseUrl . 'data/matakuliah/create')}}" class="btn btn-primary mb-3"><i class="fas fa-plus"> Tambah Mata Kuliah</i></a>
     
     <div class="row">
         <div class="col-12">
@@ -39,7 +66,7 @@
                                     <td>{{$data->nama_matkul}}</td>
                                     <td>{{$data->semester}}</td>
                                     <td>{{$data->sks_matkul}}</td>
-                                    <td><a href="{{url( $BaseUrl . 'data/ruangan/show/' . $data->id)}}" class="btn btn-info"><i class="fa fa-eye"> Detail</i></a></td>
+                                    <td><a href="{{url( $BaseUrl . 'data/matakuliah/' . $data->id)}}" class="btn btn-info"><i class="fa fa-eye"> Detail</i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>

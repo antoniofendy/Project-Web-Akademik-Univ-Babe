@@ -16,8 +16,14 @@ class CreateJurusanTable extends Migration
         Schema::create('jurusan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_jurusan');
-            $table->timestamps();
+            $table->string("jenjang_studi");
 
+            $table->unsignedBigInteger("fakultas_id");
+            $table->foreign("fakultas_id")->references("id")->on("fakultas")
+            ->onDelete("cascade")
+            ->onUpdate("cascade");
+            
+            $table->timestamps();
         });
     }
 
