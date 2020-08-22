@@ -51,6 +51,9 @@ Route::group(['prefix' => 'administrator'], function(){
 
     //Data Jurusan
     Route::resource('/data/jurusan', 'Admin\JurusanController');
+    
+    //Data Jurusan
+    Route::resource('/data/fakultas', 'Admin\FakultasController');
 
     //Data Mata kuliah
     Route::resource('/data/matakuliah', 'Admin\MataKuliahController');

@@ -92,6 +92,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{url('/' . $BaseUrl . '/data/fakultas')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Fakultas</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{url('/' . $BaseUrl . '/data/jurusan')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Jurusan</p>
